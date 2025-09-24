@@ -18,12 +18,14 @@ namespace konyvtari
     /// </summary>
     public partial class MainWindow : Window
     {
+        List<string> mufajok = ["regény", "sci-fi", "ismeretterjesztő", "fantasy", "mese", "dráma"];
         List<string> nevek = [];
         
         public MainWindow()
         {
             InitializeComponent();  
             lb_nevek.ItemsSource = nevek;
+            cmb_mufaj.ItemsSource = mufajok;
             Megnyitas();
         }
 
@@ -47,6 +49,7 @@ namespace konyvtari
             else
             {
                 MessageBox.Show(this, "A életkorhoz számot kell megadni!", "Hiba", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
             }
             string ertesitesek = "";
             if (cb_hirlevel.IsChecked == true)
@@ -59,7 +62,7 @@ namespace konyvtari
             }
             if (cb_ujsag.IsChecked == true) 
             {
-                ertesitesek += "Újság"; 
+                ertesitesek += "Újság "; 
             }
             else
             {
@@ -85,12 +88,13 @@ namespace konyvtari
             txt_confirm.Text = "Sikeres mentés";
             Olvaso olvaso = new Olvaso(nev, kor, ertesitesek, tagsag);
             Fajlkeszites(olvaso);
+            Megnyitas();
         }
         private void Fajlkeszites(Olvaso olvaso)
         {
             string filePath = @"S:\Petrik\12.E\csharp\konyvtari\konyvtari\olvasok.txt";
             string content = olvaso.ToString() ?? "";
-            File.AppendAllText(filePath, content);
+            File.AppendAllText(filePath, content + "\n");
         }
         private void Megnyitas()
         {
@@ -99,7 +103,10 @@ namespace konyvtari
             foreach (string line in lines)
             {
                 string[] reszek = line.Trim().Split(", ");
-                nevek.Add(reszek[0]);
+                if (!nevek.Contains(reszek[0]))
+                {
+                    nevek.Add(reszek[0]);
+                }
             }
             lb_nevek.Items.Refresh();
         }
