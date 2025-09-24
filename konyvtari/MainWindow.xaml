@@ -7,6 +7,16 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
+        <StackPanel>
+            <TextBox x:Name="tbox_username" Text="A felhasználó neve: "/>
+            <TextBox x:Name="tbox_age" Text="Életkor: "/>
+            <TextBlock Text="Válaszd ki a kedvenc műfajod: " Margin="0, 0, 0, 10" FontWeight="Bold"/>
+            <ComboBox x:Name="cmb_mufaj"/>
+            <TextBlock Text="Szeretnél értesítéseket kapni? " Margin="0, 0, 0, 10" FontWeight="Bold"/>
+            <CheckBox x:Name="cb_hirlevel" Content="Hírlevélen"/>
+            <CheckBox x:Name="cb_sms" Content="SMS-értésítéseken kerszetül"/>
+            <CheckBox x:Name="cb_nem" Content="Nem szeretnék"/>
 
+        </StackPanel>
     </Grid>
 </Window>
