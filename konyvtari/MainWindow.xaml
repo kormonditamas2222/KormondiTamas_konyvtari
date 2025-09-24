@@ -15,8 +15,14 @@
             <TextBlock Text="Szeretnél értesítéseket kapni? " Margin="0, 0, 0, 10" FontWeight="Bold"/>
             <CheckBox x:Name="cb_hirlevel" Content="Hírlevélen"/>
             <CheckBox x:Name="cb_sms" Content="SMS-értésítéseken kerszetül"/>
-            <CheckBox x:Name="cb_nem" Content="Nem szeretnék"/>
-
+            <CheckBox x:Name="cb_ujsag" Content="Újságot szeretnék"/>
+            <TextBlock Text="Válaszd ki a tagságod: " Margin="0, 0, 0, 10" FontWeight="Bold"/>
+            <RadioButton x:Name="rb_diak" Content="Diák" GroupName="tagsag"/>
+            <RadioButton x:Name="rb_felnott" Content="Felnőtt" GroupName="tagsag"/>
+            <RadioButton x:Name="rb_nyugdijas" Content="Nyugdíjas" GroupName="tagsag"/>
+            <Button x:Name="btn_be" Content="Mentés" Click="btn_be_Click"/>
+            <TextBlock x:Name="txt_confirm"/>
+            <ListBox x:Name="lb_nevek"/>
         </StackPanel>
     </Grid>
 </Window>
